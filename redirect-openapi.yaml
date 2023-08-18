@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'URL Redirect Microservice'
+paths:
+  /r/{id}:
+    get:
+      summary: Redirects to the original URL
+      description: Fetches the original URL associated with the given short ID and redirects the client to it.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The shortened URL's unique identifier.
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to the original URL.
+        '404':
+          description: Short URL not found.
+        '500':
+          description: Internal server error.
